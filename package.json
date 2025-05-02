@@ -1,9 +1,10 @@
 {
-  "name": "karmatester",
+  "name": "protobufjs-test-harness",
   "version": "1.1.0",
-  "description": "A simple, re-usable test harness for prototyping",
+  "description": "A Protobuf.js playground",
   "main": "index.js",
   "scripts": {
+    "compile": "npx pbjs -t static-module -w commonjs -o example.js example.proto",
     "createCert": "openssl req -new -x509 -newkey rsa:4096 -keyout key.pem -nodes -out cert.pem <<END\nUS\nColorado\nBoulder\nStupid Genius Software\nlocalhost\n\n\nEND",
     "karma": "karma start",
     "mocha": "mocha",
@@ -25,9 +26,8 @@
     "karma-mocha": "^2.0.1",
     "karma-mocha-reporter": "^2.2.5",
     "log-ng": "github:stupid-genius/log-ng",
-    "mocha": "^10.2.0"
-  },
-  "dependencies": {
-    "protobufjs": "^7.5.0"
+    "mocha": "^10.2.0",
+    "protobufjs": "^7.5.0",
+    "protobufjs-cli": "^1.2.0"
   }
 }

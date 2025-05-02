@@ -1,0 +1,66 @@
+syntax = "proto3";
+package example;
+
+message ExampleMessage {
+  string example_field = 1; // becomes exampleField
+}
+
+// Import another proto (if needed)
+// import "google/protobuf/timestamp.proto";
+
+// Top-level enum
+enum Status {
+  UNKNOWN = 0;
+  ACTIVE = 1;
+  INACTIVE = 2;
+}
+
+// Top-level message
+message User {
+  // Scalar types
+  int32 id = 1;
+  string name = 2;
+  bool is_active = 3;
+  float score = 4;
+  double precision_score = 5;
+  bytes raw_data = 6;
+
+  // Nested message
+  message Address {
+    string street = 1;
+    string city = 2;
+    string state = 3;
+    string zip = 4;
+  }
+
+  // Nested enum
+  enum Role {
+    UNSPECIFIED = 0;
+    ADMIN = 1;
+    USER = 2;
+    GUEST = 3;
+  }
+
+  Address address = 7;
+  Role role = 8;
+  Status status = 9;
+
+  // Repeated field
+  repeated string tags = 10;
+
+  // Map field
+  map<string, int32> preferences = 11;
+
+  // Oneof field (mutually exclusive)
+  oneof contact {
+    string email = 12;
+    string phone = 13;
+  }
+
+  // Using an imported type (commented out here)
+  // google.protobuf.Timestamp created_at = 14;
+}
+
+// Empty message pattern
+message Empty {}
+
